@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Create better Minecraft server listings in minutes. ServerGrower helps Java and Bedrock server owners write clearer, more compelling listings.">
+  <title>Listing Studio — ServerGrower</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="ServerGrower home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 28 9.5v13L16 29 4 22.5v-13L16 3Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m10 17 4 4 8-10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span>server<span class="brand-accent">grower</span><small>SERVER OWNER TOOLKIT</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="studio"><span class="nav-icon">✳</span> Listing Studio <span class="nav-arrow">↗</span></button>
+      <button class="nav-item" data-view="planner"><span class="nav-icon">▦</span> Promotion planner <span class="soon">SOON</span></button>
+      <button class="nav-item" data-view="tracker"><span class="nav-icon">⌁</span> Growth tracker <span class="soon">SOON</span></button>
+      <div class="sidebar-bottom">
+        <div class="free-card"><span class="free-dot"></span><div><strong>Free workspace</strong><p>No account needed. Your work stays in this browser.</p></div></div>
+        <a class="github-link" href="https://github.com/yazoniplay/server-grower" target="_blank" rel="noreferrer"><span>⌘</span> View on GitHub <span>↗</span></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong>Listing Studio</strong></div><div class="topbar-right"><span class="status-dot"></span> <span>Java + Bedrock</span><span class="avatar">SG</span></div></header>
+      <section class="page-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR SERVER, BETTER PRESENTED</div><h1>Listing <span>Studio.</span></h1><p class="subtitle">Turn your server details into a listing players actually understand.</p></div>
+        <div class="heading-chip"><span class="sparkle">✳</span> Free tool <span class="chip-divider"></span> No signup</div>
+      </section>
+
+      <div class="notice"><span class="notice-icon">i</span><p><strong>Built for real server owners.</strong> Create your listing, copy it wherever you promote your server, and test what gets players interested. No fake player counts or growth promises.</p><button id="dismissNotice" aria-label="Dismiss notice">×</button></div>
+
+      <div class="workspace-grid" id="studioView">
+        <section class="panel form-panel">
+          <div class="panel-heading"><div><span class="step-label">STEP 01</span><h2>Tell us about your server</h2><p>Specific details make a better listing.</p></div><span class="panel-icon">⌘</span></div>
+          <form id="listingForm">
+            <label for="serverName">Server name <span class="required">*</span></label>
+            <input id="serverName" name="serverName" maxlength="40" placeholder="e.g. EmberCraft" required value="">
+            <div class="field-row"><div class="field-group"><label for="edition">Edition</label><select id="edition" name="edition"><option value="Java">Java Edition</option><option value="Bedrock">Bedrock Edition</option><option value="Java & Bedrock">Java + Bedrock</option></select></div><div class="field-group"><label for="gamemode">Main game mode</label><select id="gamemode" name="gamemode"><option>Survival SMP</option><option>Vanilla</option><option>Modded Survival</option><option>Skyblock</option><option>BedWars</option><option>Factions</option><option>Creative</option><option>Minigames</option><option>Roleplay</option><option>Other</option></select></div></div>
+            <label for="audience">Who is it for?</label><input id="audience" name="audience" maxlength="100" placeholder="e.g. chill players who like building together">
+            <label for="features">Your best features <span class="label-hint">Up to 3 works best</span></label><textarea id="features" name="features" rows="3" maxlength="300" placeholder="e.g. player-run shops, weekly events, no pay-to-win"></textarea><div class="char-count"><span id="featureCount">0</span>/300</div>
+            <div class="field-row"><div class="field-group"><label for="community">Community vibe</label><select id="community" name="community"><option>Friendly & relaxed</option><option>Competitive</option><option>Creative & collaborative</option><option>Adventure & exploration</option><option>Fast-paced</option></select></div><div class="field-group"><label for="tone">Listing style</label><select id="tone" name="tone"><option value="balanced">Clear & inviting</option><option value="energetic">Energetic</option><option value="minimal">Minimal</option></select></div></div>
+            <label for="address">Server address <span class="optional">Optional</span></label><input id="address" name="address" maxlength="100" placeholder="play.example.net">
+            <label for="port">Bedrock port <span class="optional">Optional</span></label><input id="port" name="port" inputmode="numeric" maxlength="5" placeholder="19132 (default)">
+            <div class="form-footer"><span class="privacy-note"><span>◈</span> No account. No data sent to a server.</span><button type="submit" class="primary-button"><span>✳</span> Generate listing <span class="button-arrow">→</span></button></div>
+          </form>
+        </section>
+
+        <section class="panel output-panel">
+          <div class="panel-heading output-heading"><div><span class="step-label">STEP 02</span><h2>Your listing</h2><p>Review it, then copy and post it.</p></div><span class="live-pill"><span></span> LIVE PREVIEW</span></div>
+          <div class="preview-card">
+            <div class="preview-top"><div class="server-avatar" id="serverAvatar">?</div><div class="preview-title"><h3 id="previewName">Your server name</h3><div class="preview-meta"><span id="previewEdition">JAVA EDITION</span><span class="meta-dot"></span><span id="previewMode">SURVIVAL SMP</span></div></div><span class="preview-status"><i></i> YOUR LISTING</span></div>
+            <div class="preview-divider"></div>
+            <div class="preview-description" id="previewDescription">Your server description will appear here. Add a name and a few details, then generate your first listing.</div>
+            <div class="feature-tags" id="previewTags"><span class="feature-tag muted-tag">Your features will show here</span></div>
+            <div class="preview-address"><span class="address-icon">⌘</span><span id="previewAddress">your.server.address</span><button id="copyAddress" type="button" title="Copy server address" aria-label="Copy server address">▢</button></div>
+          </div>
+          <div class="output-label"><span>GENERATED DESCRIPTION</span><span id="wordCount">0 words</span></div>
+          <textarea id="outputText" class="output-text" aria-label="Generated server description" placeholder="Your generated description will appear here..." spellcheck="true"></textarea>
+          <div class="output-actions"><button type="button" id="copyListing" class="primary-button"><span>▢</span> Copy listing <span class="button-arrow">→</span></button><button type="button" id="downloadListing" class="secondary-button">↓ Download .txt</button></div>
+          <p class="output-footnote"><span>✳</span> Treat this as a starting point. Keep only claims that are true for your server.</p>
+        </section>
+      </div>
+
+      <section class="panel lower-panel" id="tipsPanel"><div class="lower-icon">↗</div><div class="lower-copy"><span class="step-label">A QUICK TIP</span><h3>Be specific, not just loud.</h3><p>“A friendly survival server with player-run shops and community builds” tells players more than “THE BEST SERVER EVER!!!” Real details help the right players find you.</p></div><div class="tip-number">01 <span>/ 03</span></div></section>
+      <footer class="footer"><span>© 2026 ServerGrower</span><span>Made for independent Minecraft server owners.</span><a href="https://github.com/yazoniplay/server-grower" target="_blank" rel="noreferrer">Open source ↗</a></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
