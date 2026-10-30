@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d12">
+<meta name="description" content="A practical operations workspace for Minecraft SMP teams."><title>Operations — ServerGrower</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ops.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<a class="brand" href="index.html"><span class="brand-mark">S</span><span>server<span class="accent">grower</span><small>SERVER OWNER TOOLKIT</small></span></a>
+<div class="side-label">WORKSPACE</div>
+<nav id="nav">
+<button class="nav active" data-page="overview"><span>◫</span> Overview</button>
+<button class="nav" data-page="staff"><span>♙</span> Staff</button>
+<button class="nav" data-page="moderation"><span>⬡</span> Moderation</button>
+<button class="nav" data-page="events"><span>▦</span> Events</button>
+<button class="nav" data-page="seasons"><span>◷</span> Season planner</button>
+<button class="nav" data-page="toolkit"><span>▤</span> Toolkit</button>
+</nav>
+<div class="sidebar-bottom"><div class="server-switch"><i></i><div><b id="serverLabel">Your SMP</b><small>DEMO WORKSPACE</small></div><span>⌄</span></div><a href="index.html" class="back-link">← Listing Studio</a><p>ServerGrower · Local demo</p></div>
+</aside>
+<main>
+<header class="topbar"><div class="crumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><span class="save-state" id="saveState">● Saved locally</span><button class="icon-btn" id="exportBtn" title="Export workspace data">⇩</button><div class="avatar">SG</div></div></header>
+<section class="page active" id="page-overview">
+<div class="heading"><div><div class="eyebrow">SERVER OPERATIONS</div><h1>Overview<span>.</span></h1><p>One place to keep your SMP team organised.</p></div><div class="heading-actions"><span class="demo-badge">SAMPLE DATA</span><button class="primary" data-open="task">＋ Add task</button></div></div>
+<div class="notice"><b>Demo workspace</b><span>These are example records, not live server statistics. Add your own team and activity to make this workspace yours.</span><button id="dismissNotice">×</button></div>
+<div class="stats">
+<article class="stat"><div>Staff members <span>♙</span></div><strong id="statStaff">0</strong><small>People in your operations team</small></article>
+<article class="stat"><div>Open reports <span>⬡</span></div><strong id="statReports">0</strong><small>Cases waiting for review</small></article>
+<article class="stat"><div>Upcoming events <span>▦</span></div><strong id="statEvents">0</strong><small>Scheduled community activities</small></article>
+<article class="stat"><div>Tasks remaining <span>✓</span></div><strong id="statTasks">0</strong><small>Items still to complete</small></article>
+</div>
+<div class="overview-grid">
+<section class="panel"><div class="panel-head"><div><h2>Priority tasks</h2><p>Keep the next actions visible.</p></div><button class="text-btn" data-goto="seasons">View planner ↗</button></div><div id="overviewTasks" class="task-list"></div></section>
+<section class="panel"><div class="panel-head"><div><h2>Upcoming events</h2><p>What's coming up for your players.</p></div><button class="text-btn" data-goto="events">View calendar ↗</button></div><div id="overviewEvents" class="event-list"></div></section>
+</div>
+<section class="panel activity-panel"><div class="panel-head"><div><h2>Operations snapshot</h2><p>A quick view of the systems you should keep current.</p></div></div><div class="snapshot-grid"><div><span class="snapshot-icon">♙</span><b>Staff coverage</b><small>Keep responsibilities and availability documented.</small><button class="text-btn" data-goto="staff">Manage staff →</button></div><div><span class="snapshot-icon">⬡</span><b>Player reports</b><small>Record decisions so moderation stays consistent.</small><button class="text-btn" data-goto="moderation">Review cases →</button></div><div><span class="snapshot-icon">▤</span><b>Team procedures</b><small>Use repeatable checklists instead of memory.</small><button class="text-btn" data-goto="toolkit">Open toolkit →</button></div></div></section>
+</section>
+
+<section class="page" id="page-staff">
+<div class="heading"><div><div class="eyebrow">PEOPLE & RESPONSIBILITIES</div><h1>Staff<span>.</span></h1><p>Keep your team, roles and availability organised.</p></div><button class="primary" data-open="staff">＋ Add staff member</button></div>
+<div class="toolbar"><input class="search" id="staffSearch" placeholder="Search staff by name or role"><span class="muted" id="staffCount"></span></div>
+<div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>TEAM MEMBER</th><th>ROLE</th><th>TIME ZONE</th><th>STATUS</th><th></th></tr></thead><tbody id="staffRows"></tbody></table></div><div id="staffEmpty" class="empty" hidden>No staff members yet. Add your first team member.</div></div>
+</section>
+
+<section class="page" id="page-moderation">
+<div class="heading"><div><div class="eyebrow">PLAYER TRUST & SAFETY</div><h1>Moderation<span>.</span></h1><p>Document reports and decisions consistently.</p></div><button class="primary" data-open="report">＋ Log report</button></div>
+<div class="stats compact"><article class="stat"><div>Open cases</div><strong id="openCaseCount">0</strong></article><article class="stat"><div>Resolved cases</div><strong id="resolvedCaseCount">0</strong></article></div>
+<div class="toolbar"><input class="search" id="reportSearch" placeholder="Search player, case or reason"><span class="muted">Keep sensitive evidence in your approved private systems.</span></div>
+<div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>CASE</th><th>PLAYER</th><th>REASON</th><th>PRIORITY</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="reportRows"></tbody></table></div><div id="reportEmpty" class="empty" hidden>No reports logged yet.</div></div>
+</section>
+
+<section class="page" id="page-events">
+<div class="heading"><div><div class="eyebrow">COMMUNITY CALENDAR</div><h1>Events<span>.</span></h1><p>Plan activities and make ownership clear.</p></div><button class="primary" data-open="event">＋ Create event</button></div>
+<div class="event-layout"><section class="panel"><div class="panel-head"><div><h2>Schedule</h2><p>Your upcoming community activities.</p></div></div><div id="eventRows" class="event-list"></div><div id="eventEmpty" class="empty" hidden>No events scheduled. Add one to get started.</div></section>
+<section class="panel checklist"><div class="panel-head"><div><h2>Event runbook</h2><p>A simple repeatable process.</p></div></div><ol><li><b>Define the format</b><small>Set the goal, rules, time and player capacity.</small></li><li><b>Assign event staff</b><small>Confirm a host and a moderator.</small></li><li><b>Publish the announcement</b><small>Include timezone, sign-up and rewards.</small></li><li><b>Review the outcome</b><small>Record turnout and what to improve.</small></li></ol></section></div>
+</section>
+
+<section class="page" id="page-seasons">
+<div class="heading"><div><div class="eyebrow">PLANNING & EXECUTION</div><h1>Season planner<span>.</span></h1><p>Turn a season launch into trackable work.</p></div><button class="primary" data-open="task">＋ Add task</button></div>
+<section class="panel season-panel"><div class="panel-head"><div><h2 id="seasonTitle">Season 01 · Your next chapter</h2><p>Rename the season and check off work as it gets done.</p></div><button class="secondary" id="renameSeason">Edit season</button></div><div class="season-progress"><div><span>Completion</span><b id="progressText">0%</b></div><div class="progress-track"><span id="progressBar"></span></div></div><div id="seasonTasks" class="task-list"></div></section>
+</section>
+
+<section class="page" id="page-toolkit">
+<div class="heading"><div><div class="eyebrow">DOWNLOADABLE RESOURCES</div><h1>Toolkit<span>.</span></h1><p>Practical documents your staff can adapt to your server.</p></div><span class="demo-badge">INCLUDED TEMPLATES</span></div>
+<div class="tool-grid" id="toolGrid"></div>
+<div class="notice toolkit-note"><b>Product preview</b><span>These starter templates are included to demonstrate the product. A paid release should add polished, fully editable documents and a clear setup guide.</span></div>
+</section>
+<footer class="footer"><span>ServerGrower · SMP Operations</span><span>Prototype build · Data stays in this browser</span></footer>
+</main>
+</div>
+
+<div class="modal-back" id="modalBack"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><h2 id="modalTitle">Add item</h2><p id="modalDescription"></p></div><button class="icon-btn" id="closeModal" aria-label="Close">×</button></div><form id="modalForm"><div id="modalFields"></div><div class="modal-actions"><button type="button" class="secondary" id="cancelModal">Cancel</button><button type="submit" class="primary">Save record</button></div></form></section></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="ops.js"></script>
+</body></html>
